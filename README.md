@@ -5,11 +5,10 @@
 
 ## Introduction
 
-This dataset, sourced from Goodreads, a well-known online book catalog, encompasses an extensive collection of over 52,000 books. Updated last on November 9, 2020, it provides a rich basis for this analysis. The begining of this project delves into Exploratory Data Analysis (EDA), offering visuals and insights that set the stage for further investigation. The primary aim here is to thoroughly understand the dataset and craft hypotheses, laying the groundwork for developing a personalized book recommendation model. The baseline model employed is logistic regression, serving as a foundation for more sophisticated model iterations.
+This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers a personalized recommendation so that they can easily find a book that they will enjoy. 
+From my own experience, I’m picky with what books I read. If I read a book that I don’t enjoy, I tend to give up on reading altogether and it can take months before I look for another book to read. By the end of this project, I hope to assist in someone's reading journey and get them hooked on books. 
 
-### Problem Area
-
-Finding a book that resonates with one's taste can be challenging. Often, an unsatisfactory reading experience leads to a reluctance in exploring new books. This project seeks to address this issue by offering tailored book recommendations, enhancing readers' engagement and encouraging them to explore more literature.
+This dataset is sourced from Goodreads, a well-known online book catalog website. It encompasses an extensive collection of over 52,000 books. Updated last on November 9, 2020, it provides a rich basis for this analysis. The beginning of this project delves into Exploratory Data Analysis (EDA), offering visuals and insights that set the stage for further investigation. The primary aim here is to thoroughly understand the dataset and craft hypotheses, laying the groundwork for developing a personalized book recommendation model. The baseline model employed is logistic regression, serving as a foundation for more sophisticated model iterations.
 
 ### The User
 
@@ -22,10 +21,34 @@ This model targets two main user groups:
 
 The core concept involves users inputting titles they've enjoyed in the past, prompting the model to generate suggestions for future reading. This approach aims to streamline the discovery of new books aligned with individual preferences.
 
-### Impact
+### Data Cleaning, Preprocessing, and Baseline Modeling
 
-This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers a personalized recommendation so that they can easily find a book that they will enjoy. 
-From my own experience, I’m picky with what books I read. If I read a book that I don’t enjoy, I tend to give up on reading altogether and it can take months before I look for another book to read. By the end of this project, I hope to assist in someone's reading journey and get them hooked on books. 
+The initial state of the dataset presented a challenge with numerous missing values and several irrelevant columns. Our cleaning process primarily focused on:
+- Eliminating non-essential columns and rows that didn't contribute value to the project.
+- Thoroughly inspecting and handling missing data to ensure dataset integrity.
+
+Given that most dataset variables were categorical, our preprocessing efforts centered around:
+- Converting these categorical values into numerical representations for effective analysis.
+- Resolving complexities in the 'genres' column, which originally contained over 1,000 genres with formatting-induced duplicates. This column underwent significant cleaning to prepare it for further analysis.
+
+The baseline model is a logistic regression model, chosen for its simplicity in binary classification problems. This model's accuracy was quite low to begin with, at just over 54 percent. This still provide a good baseline and hopefully future models will be able to outperform this accuracy.
+
+### Next Steps
+
+Going back into data cleaning and preprocessing
+- Consolidating similar genres for a more practical model. 
+- Looking at the 'authors' column to include each author's average rating, offering deeper insights for book recommendations.
+
+- Testing out different models
+    - Random Forest 
+    - Neural Network
+    - Gradient Descent 
+    
+- Using grid-search for narrowing down the model parameters
+
+- For the evaluation process, these are the metrics that will be considered:
+    - Accuracy - the dataset is close to being balanced so the accuracy score will be a fundamental metric
+    - Precision and Recall - these metrics will be used in addition to accuracy, since the dataset is not completely balanced
 
 ### Datasets:
 
