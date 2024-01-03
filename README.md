@@ -2,6 +2,7 @@
 
 ### Author: Quinci Birker
 
+--------------------------------------------------------------------
 
 ## Introduction
 
@@ -21,6 +22,14 @@ This model targets two main user groups:
 
 The core concept involves users inputting titles they've enjoyed in the past, prompting the model to generate suggestions for future reading. This approach aims to streamline the discovery of new books aligned with individual preferences.
 
+--------------------------------------------------------------------
+
+## Project Organization
+
+
+
+--------------------------------------------------------------------
+
 ### Data Cleaning, Preprocessing, and Baseline Modeling
 
 The initial state of the dataset presented a challenge with numerous missing values and several irrelevant columns. Our cleaning process primarily focused on:
@@ -32,6 +41,8 @@ Given that most dataset variables were categorical, our preprocessing efforts ce
 - Resolving complexities in the 'genres' column, which originally contained over 1,000 genres with formatting-induced duplicates. This column underwent significant cleaning to prepare it for further analysis.
 
 The baseline model is a logistic regression model, chosen for its simplicity in binary classification problems. This model's accuracy was quite low to begin with, at just over 54 percent. This still provide a good baseline and hopefully future models will be able to outperform this accuracy.
+
+--------------------------------------------------------------------
 
 ### Next Steps
 
@@ -49,6 +60,8 @@ Going back into data cleaning and preprocessing
 - For the evaluation process, these are the metrics that will be considered:
     - Accuracy - the dataset is close to being balanced so the accuracy score will be a fundamental metric
     - Precision and Recall - these metrics will be used in addition to accuracy, since the dataset is not completely balanced
+    
+--------------------------------------------------------------------
 
 ### Datasets:
 
