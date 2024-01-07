@@ -29,51 +29,71 @@ The core concept involves users inputting certain features about a book and the 
 ## Project Organization
 
 Folder: Notebooks 
-1. EDA_&_Baseline_Modeling.ipynb
-2. Advanced_Modeling-Part_1.ipynb
-3. Feature_Engineering-Part_2.ipynb
-4. Advanced_Modeling_Final.ipynb
-  Folder: data 
-  1. books_1.Best_Books_Ever.csv - the original dataset
-  2. GoodReads_Dataset_cleaned.csv - a copy of the cleaned dataset
-  3. y_train/test, X_train/test csv files - copy of the separated dataframes, ready for modeling
+1. EDA_&_Baseline_Modeling.ipynb - EDA, data cleaning/preprocessing, feature engineering, baseline model
+2. Advanced_Modeling-Part_1.ipynb - Advanced modeling, error analysis, feature importance
+3. Feature_Engineering-Part_2.ipynb - Continued feature engineering, specifically dealing with the 'desciption' and 'publisher' columns
+4. Advanced_Modeling_Final.ipynb - Advanced modeling with the new features added, error analysis, feature importance
+
+Folder: Notebooks -> data 
+1. books_1.Best_Books_Ever.csv - the original dataset
+2. GoodReads_Dataset_cleaned.csv - a copy of the cleaned dataset
+3. y_train/test, X_train/test csv files - copy of the separated dataframes, ready for modeling
 
 Folder: Presentations
-1. Sprint_1-EDA.pdf
-2. Sprint_2-EDA_&_Baseline_Modeling.pdf
-3. Sprint_3-Final_Project.pdf
+1. Sprint_1-EDA.pdf - Introduction to the project, basic exploration of the dataset and hypotheses for future exploring
+2. Sprint_2-EDA_&_Baseline_Modeling.pdf - Project updated: major areas for data cleaning/preprocessing, baseline model 
+3. Sprint_3-Final_Project.pdf - Project updated: reviewing the project, more feature engineering steps and performance from advanced modeling.
 --------------------------------------------------------------------
 
-### Data Cleaning, Preprocessing, and Baseline Modeling
+### Data Cleaning, Preprocessing, Feature Engineering
 
 The initial state of the dataset presented a challenge with numerous missing values and several irrelevant columns. Our cleaning process primarily focused on:
 - Eliminating non-essential columns and rows that didn't contribute value to the project.
 - Thoroughly inspecting and handling missing data to ensure dataset integrity.
 
-Given that most dataset variables were categorical, our preprocessing efforts centered around:
+Given that most dataset variables were categorical, our preprocessing and feature engineering efforts centered around:
 - Converting these categorical values into numerical representations for effective analysis.
 - Resolving complexities in the 'genres' column, which originally contained over 1,000 genres with formatting-induced duplicates. This column underwent significant cleaning to prepare it for further analysis.
-
-The baseline model is a logistic regression model, chosen for its simplicity in binary classification problems. This model's accuracy was quite low to begin with, at just over 54 percent. This still provide a good baseline and hopefully future models will be able to outperform this accuracy.
+- Utilized Text Preprocessing with TF-IDF Vectorization, keeping the top 400 words from descriptions
 
 --------------------------------------------------------------------
 
-### Next Steps
+### Modeling
 
-Going back into data cleaning and preprocessing
-- Consolidating similar genres for a more practical model. 
-- Looking at the 'authors' column to include each author's average rating, offering deeper insights for book recommendations.
+Logisitc Regression Model:
+The baseline model is a logistic regression model, chosen for its simplicity in binary classification problems. This model's accuracy was quite low to begin with, at just over 54 percent.
 
-- Testing out different models
-    - Random Forest 
-    - Neural Network
-    - Gradient Descent 
-    
-- Using grid-search for narrowing down the model parameters
+Random Forest Classifier:
+RFC adds extra randomness compared to Decision Tree Model, showing more potential for higher accuracy. For this specific project, we have a lot of features being implemented and this model is good with working with large datasets that have multiple features.
+Compared to more advanced models, RFC allows for more interpretation, which is important when understanding what features play a larger role in deciding whether a book is good or bad.
 
-- For the evaluation process, these are the metrics that will be considered:
-    - Accuracy - the dataset is close to being balanced so the accuracy score will be a fundamental metric
-    - Precision and Recall - these metrics will be used in addition to accuracy, since the dataset is not completely balanced
+XGBoost:For creating a book recommender system, XGBoost can be efficient in handling sparse data and a powerful took for this project. It also offers regularization that helps control overfitting by using L1/L2 penalities.
+
+Summary from modeling:
+
+All three models had relatively low accuracy scores with Random Forest Classifier being the highest at 60 percent. When reviewing other metrics, such as recall, precision and F-1 scores there is a notable imbalance in its ability to accurately classify both classes, especially struggling with class 0 (negative rating).
+
+--------------------------------------------------------------------
+### Challenges and Future Steps
+
+**Challenges**
+1. Lack of Relevant Information: If the models can't distinguish well between classes, it indicates a potential issue with the features used. More relevant features could be needed for better classifying.
+2. Data Imbalance: Even a small imbalance can significantly impact model performance, especially for algorithms sensitive to class distribution.
+3. Dataset Limitations: Real-world datasets often have limitations, and the current dataset might not capture all the nuances needed for high accuracy. Exploring additional or updated datasets could be beneficial.
+
+**Future Steps**
+1. Data Cleaning and Preprocessing:
+- Genre Consolidation: Simplifying the genre categories can reduce noise and make the model more practical.
+- Incorporating Author Information: Popular authors can be a strong feature, as author popularity often influences book choice.
+- Word Embedding for Descriptions: Might be able to capture book descriptions more effectively.
+- Awards Feature: Binary encoding of whether a book has received awards can be a useful feature, as awards can signify quality or popularity.
+2. Advanced Modeling:
+- Enhanced Grid Search: More thorough hyperparameter tuning can help in finding the optimal model parameters, potentially improving model performance.
+- Experimentation with Different Models: Sometimes, different algorithms can capture data patterns better, so experimenting with various models could be key.
+3. Recommender System:
+- Shifting focus to a recommender system to provide personalized book recommendations. As of right now, the model does not consider personal preferences. The goal is to combine important features from this modeling, combined with personal interests.
+- Collaborative Filtering: Makes automatic predictions about the interests of a user by collecting preferences from many users.
+- Content-Based Filtering: This approach uses item features (like genre, author, description) to recommend additional items similar to what the user likes, based on their previous liking.
     
 --------------------------------------------------------------------
 
