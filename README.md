@@ -1,4 +1,5 @@
-# Capstone Project - Sprint 2
+# Hooked on Books
+## A Book Recommender System
 
 ### Author: Quinci Birker
 
@@ -6,7 +7,8 @@
 
 ## Introduction
 
-This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers a personalized recommendation so that they can easily find a book that they will enjoy. 
+This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers a an easy way to know if a book is worth reading, or not. 
+
 From my own experience, I’m picky with what books I read. If I read a book that I don’t enjoy, I tend to give up on reading altogether and it can take months before I look for another book to read. By the end of this project, I hope to assist in someone's reading journey and get them hooked on books. 
 
 This dataset is sourced from Goodreads, a well-known online book catalog website. It encompasses an extensive collection of over 52,000 books. Updated last on November 9, 2020, it provides a rich basis for this analysis. The beginning of this project delves into Exploratory Data Analysis (EDA), offering visuals and insights that set the stage for further investigation. The primary aim here is to thoroughly understand the dataset and craft hypotheses, laying the groundwork for developing a personalized book recommendation model. The baseline model employed is logistic regression, serving as a foundation for more sophisticated model iterations.
@@ -20,14 +22,26 @@ This model targets two main user groups:
 
 ### Big Idea
 
-The core concept involves users inputting titles they've enjoyed in the past, prompting the model to generate suggestions for future reading. This approach aims to streamline the discovery of new books aligned with individual preferences.
+The core concept involves users inputting certain features about a book and the model will either output 'I recommend this book' or 'I do not recommend this book'. 
 
 --------------------------------------------------------------------
 
 ## Project Organization
 
+Folder: Notebooks 
+1. EDA_&_Baseline_Modeling.ipynb
+2. Advanced_Modeling-Part_1.ipynb
+3. Feature_Engineering-Part_2.ipynb
+4. Advanced_Modeling_Final.ipynb
+  Folder: data 
+  1. books_1.Best_Books_Ever.csv - the original dataset
+  2. GoodReads_Dataset_cleaned.csv - a copy of the cleaned dataset
+  3. y_train/test, X_train/test csv files - copy of the separated dataframes, ready for modeling
 
-
+Folder: Presentations
+1. Sprint_1-EDA.pdf
+2. Sprint_2-EDA_&_Baseline_Modeling.pdf
+3. Sprint_3-Final_Project.pdf
 --------------------------------------------------------------------
 
 ### Data Cleaning, Preprocessing, and Baseline Modeling
