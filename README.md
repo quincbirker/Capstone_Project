@@ -7,8 +7,7 @@
 
 ## Introduction
 
-This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers a an easy way to know if a book is worth reading, or not. 
-
+This project aims to give people more incentive to pick up a book and start reading. It can be daunting to go out and purchase a book when you have no idea if you will like it or not. I want to give readers an easy way to know if a book is likely to be worth their time. 
 From my own experience, I’m picky with what books I read. If I read a book that I don’t enjoy, I tend to give up on reading altogether and it can take months before I look for another book to read. By the end of this project, I hope to assist in someone's reading journey and get them hooked on books. 
 
 This dataset is sourced from Goodreads, a well-known online book catalog website. It encompasses an extensive collection of over 52,000 books. Updated last on November 9, 2020, it provides a rich basis for this analysis. The beginning of this project delves into Exploratory Data Analysis (EDA), offering visuals and insights that set the stage for further investigation. The primary aim here is to thoroughly understand the dataset and craft hypotheses, laying the groundwork for developing a personalized book recommendation model. The baseline model employed is logistic regression, serving as a foundation for more sophisticated model iterations.
@@ -22,22 +21,36 @@ This model targets two main user groups:
 
 ### Big Idea
 
-The core concept involves users inputting certain features about a book and the model will either output 'I recommend this book' or 'I do not recommend this book'. 
+GPT
+The fundamental idea is centered around a user-friendly interaction where individuals input specific details about a book, and in response, the model predicts whether it's recommendable or not. The ultimate objective is to streamline this process so that a user can simply scan a book, swiftly feed the necessary information into the model, and promptly receive a recommendation. Additionally, if the model advises against a particular book, it will suggest an alternative book that aligns with the user's preferences and resembles the book initially scanned. This system aims to enhance the reading experience by guiding users towards books they are more likely to enjoy.
+
+--------------------------------------------------------------------
+## Table of Contents
+
+1. Project Organization
+2. Data Cleaning, Preprocessing, & Feature Engineering
+3. Modeling
+4. Challenges and Future Steps
+5. Dataset Overview
 
 --------------------------------------------------------------------
 
 ## Project Organization
+
+README.md - The main README document for an overview of my project
 
 Folder: Notebooks 
 1. EDA_&_Baseline_Modeling.ipynb - EDA, data cleaning/preprocessing, feature engineering, baseline model
 2. Advanced_Modeling-Part_1.ipynb - Advanced modeling, error analysis, feature importance
 3. Feature_Engineering-Part_2.ipynb - Continued feature engineering, specifically dealing with the 'desciption' and 'publisher' columns
 4. Advanced_Modeling_Final.ipynb - Advanced modeling with the new features added, error analysis, feature importance
+5. Hooked_on_Books_App.py - App (not fully complete)
 
 Folder: Notebooks -> data 
 1. books_1.Best_Books_Ever.csv - the original dataset
 2. GoodReads_Dataset_cleaned.csv - a copy of the cleaned dataset
-3. y_train/test, X_train/test csv files - copy of the separated dataframes, ready for modeling
+3. y_train2/test2, X_train2/test2 csv files - copy of the separated dataframes, ready for modeling
+4. random_forest_model.joblib - random forest model
 
 Folder: Presentations
 1. Sprint_1-EDA.pdf - Introduction to the project, basic exploration of the dataset and hypotheses for future exploring
@@ -45,14 +58,23 @@ Folder: Presentations
 3. Sprint_3-Final_Project.pdf - Project updated: reviewing the project, more feature engineering steps and performance from advanced modeling.
 --------------------------------------------------------------------
 
-### Data Cleaning, Preprocessing, Feature Engineering
+### Data Cleaning, Preprocessing, & Feature Engineering
 
+**Data Cleaning**
 The initial state of the dataset presented a challenge with numerous missing values and several irrelevant columns. Our cleaning process primarily focused on:
 - Eliminating non-essential columns and rows that didn't contribute value to the project.
 - Thoroughly inspecting and handling missing data to ensure dataset integrity.
+- Filling in missing values by using information from other columns (i.e. missing pages were filled in with their mean value)
+- Ensuring that value formats were consistent throughout the rows
 
+**Data Preprocessing**
 Given that most dataset variables were categorical, our preprocessing and feature engineering efforts centered around:
 - Converting these categorical values into numerical representations for effective analysis.
+- Converting the target variable, rating, to binary column (1 = good rating, 0 = bad rating)
+
+**Feature Engineering**
+- Created new columns by taking the top 20 most popular publishers
+- Created a new column that counts the number of genres that a book has
 - Resolving complexities in the 'genres' column, which originally contained over 1,000 genres with formatting-induced duplicates. This column underwent significant cleaning to prepare it for further analysis.
 - Utilized Text Preprocessing with TF-IDF Vectorization, keeping the top 400 words from descriptions
 
@@ -69,9 +91,9 @@ Compared to more advanced models, RFC allows for more interpretation, which is i
 
 XGBoost:For creating a book recommender system, XGBoost can be efficient in handling sparse data and a powerful took for this project. It also offers regularization that helps control overfitting by using L1/L2 penalities.
 
-Summary from modeling:
+Key Insights from Data Modeling:
 
-All three models had relatively low accuracy scores with Random Forest Classifier being the highest at 60 percent. When reviewing other metrics, such as recall, precision and F-1 scores there is a notable imbalance in its ability to accurately classify both classes, especially struggling with class 0 (negative rating).
+All three models had relatively low accuracy scores with Random Forest Classifier being the highest at 60 percent. When reviewing other metrics, such as recall, precision and F-1 scores there is a notable imbalance in its ability to accurately classify both classes, especially struggling with class 0 (negative rating). 
 
 --------------------------------------------------------------------
 ### Challenges and Future Steps
@@ -97,7 +119,7 @@ All three models had relatively low accuracy scores with Random Forest Classifie
     
 --------------------------------------------------------------------
 
-### Datasets:
+## Dataset Overview:
 
 Best Books Ever Dataset
 - source: https://zenodo.org/records/4265096
@@ -137,8 +159,3 @@ Best Books Ever Dataset
 Target Variable | Description   | Completeness  |
 | ------------- | ------------- | ------------- | 
 | rating | Global goodreads rating | 100 |
-
-
-
-
-
