@@ -21,7 +21,6 @@ This model targets two main user groups:
 
 ### Big Idea
 
-GPT
 The fundamental idea is centered around a user-friendly interaction where individuals input specific details about a book, and in response, the model predicts whether it's recommendable or not. The ultimate objective is to streamline this process so that a user can simply scan a book, swiftly feed the necessary information into the model, and promptly receive a recommendation. Additionally, if the model advises against a particular book, it will suggest an alternative book that aligns with the user's preferences and resembles the book initially scanned. This system aims to enhance the reading experience by guiding users towards books they are more likely to enjoy.
 
 --------------------------------------------------------------------
